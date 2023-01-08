@@ -6,5 +6,22 @@
 {% block body %}
 <div class="container">
     <h1 class="text-center">Django Notification Demo</h1>
+    {{ room_name|json_script:"room_name"}}
+    <script>
+        const room_name = JSON.parse(document.getElementById("room_name").textContent)
+        console.log(room_name)
+        url = "ws://"+window.location.host+"/ws/notification/"+ room_name + "/"
+        var nSocket = new WebSocket(url)
+        nSocket.onopen = (event)=>{
+            console.log("websocket connected....", event)
+        }
+        nSocket.onmessage = (event) => {
+            const data = JSON.parse(event.data)
+            console.log(data)
+            document.getElementById("notification-dropdown").innerHTML = "<li class='dropdown-item'>"+data+"</li><hr class='dropdown-divider'>" + document.getElementById("notification-dropdown").innerHTML
+            document.getElementById("notification-badge").innerHTML = parseInt(document.getElementById("notification-badge").innerHTML) + 1
+        };
+        
+    </script>
 </div>
 {% endblock body %}
