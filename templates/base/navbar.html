@@ -20,8 +20,9 @@
               </button>
             </a>
             <ul class="dropdown-menu" id="notification-dropdown">
-              <li><a class="dropdown-item" href="#"></a></li>
-
+              {% for notification in notifications %}
+              <li><a class="dropdown-item" href="#">{{ notification.content }} <p class="text-muted">{{ notification.sent_on|timesince }} ago</p></a></li>
+              {% endfor %}
             </ul>
           </li>
           <li class="nav-item">

@@ -8,10 +8,6 @@ django = "*"
 channels = "*"
 daphne = "*"
 channels-redis = "*"
-django-celery-beat = "*"
-django-celery-results = "*"
-django-timezone-field = "*"
-python-crontab = "*"
 python-dotenv = "*"
 
 [dev-packages]

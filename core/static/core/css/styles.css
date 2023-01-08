@@ -32,6 +32,14 @@
     color: #fff;
 }
 
-.icon_button .icon-button-after::after {
+.icon-button-after .icon-button__badge::after {
     display: none;
+}
+
+.icon-button-after::after {
+    content: none;
+}
+
+.icon-button-after::after {
+    color: #fff;
 }
